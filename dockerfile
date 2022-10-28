@@ -30,4 +30,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["bash", "-c", "python manage.py migrate && gunicorn -w 4 --env DJANGO_SETTINGS_MODULE=Turtle.settings Turtle.wsgi --bind 0.0.0.0:8000 --timeout=30"]
+CMD ["bash", "-c", "gunicorn -w 4 --env DJANGO_SETTINGS_MODULE=Turtle.settings Turtle.wsgi --bind 0.0.0.0:8000 --timeout=30"]

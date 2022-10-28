@@ -17,26 +17,9 @@ services:
     volumes:
       - static-volume:/home/ubuntu/Turtle/static
       - media-volume:/home/ubuntu/Turtle/media
-  mysql:
-    image: mysql
-    container_name: mysql_service
-    network:
-      - network
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --default-authentication-plugin=mysql_native_password
-    volume:
-      - mysql-database:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=${turtle}
-      - MYSQL_USER=${USER}
-      - MYSQL_ROOT_PASSWORD=${PASSWORD}
-      - MYSQL_PASSWORD=${PASSWORD}
-    ports:
-      - "3306:3306"
-
 networks:
   network:
 
 volumes:
   static-volume:
   media-volume:
-  mysql-database:
