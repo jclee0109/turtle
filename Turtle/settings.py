@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import environ
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 
     # REST FRAMEWORK
     'rest_framework',
@@ -76,6 +78,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -189,3 +192,33 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+##CORS
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'referer',
+    'origin',
+    'sec-ch-ua',
+    'sec-ch-ua-mobile'
+    'sec-ch-ua-platform',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
