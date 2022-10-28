@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -36,12 +38,24 @@ class MeasurementViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def list(self, request, profile_id=None, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset().filter(profile_id=profile_id).order_by("-start_datetime"))
+        queryset = self.filter_queryset(self.get_queryset().filter(profile_id=profile_id))
 
+        start_date = request.GET.get("start_date", None)
+        end_date = request.GET.get("end_date", None)
+
+        start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d") + datetime.timedelta(days=1)
+
+        print(f"start_date: {start_date}")
+        print(f"end_date: {end_date}")
+
+        if (start_date is not None) and (end_date is not None):
+            queryset = queryset.filter(start_datetime__gte=start_date, end_datetime__lt=end_date)
         # page = self.paginate_queryset(queryset)
         # if page is not None:
         #     serializer = self.get_serializer(page, many=True)
         #     return self.get_paginated_response(serializer.data)
 
+        queryset = queryset.order_by("-start_datetime")
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
