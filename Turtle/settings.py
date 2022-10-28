@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     # REST FRAMEWORK
     'rest_framework',
-
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
 
@@ -58,7 +57,7 @@ INSTALLED_APPS = [
 
     # Application
     'accountapp',
-
+    'profileapp'
 ]
 
 SITE_ID = 1
