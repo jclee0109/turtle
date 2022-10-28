@@ -116,7 +116,7 @@ WSGI_APPLICATION = 'Turtle.wsgi.application'
 DATABASES = {
     'default': {
     	'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'turtle',
+        'NAME': env('NAME'),
         'USER': env('USER'),
         'PASSWORD': env('PASSWORD'),
         'HOST': env('HOST'),
