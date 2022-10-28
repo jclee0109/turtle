@@ -57,7 +57,8 @@ INSTALLED_APPS = [
 
     # Application
     'accountapp',
-    'profileapp'
+    'profileapp',
+    'measurementapp',
 ]
 
 SITE_ID = 1
@@ -110,11 +111,14 @@ WSGI_APPLICATION = 'Turtle.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / env('DB_NAME'),
-    }
+    	'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'turtle',
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
+     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

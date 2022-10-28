@@ -9,7 +9,7 @@ from profileapp.models import Profile
 from profileapp.serializers import ProfileSerializer
 
 
-class ProfileViewSet(mixins.RetrieveModelMixin,
+class ProfileViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
                    mixins.UpdateModelMixin,
                    mixins.ListModelMixin,
                    GenericViewSet):
