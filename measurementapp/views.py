@@ -31,6 +31,7 @@ class MeasurementViewSet(viewsets.ModelViewSet):
         angle_sum = 0
         cnt = 0
         for angle in angles:
+            angle = float(angle)
             if 0 <= angle <= 90:
                 angle_sum += angle
                 cnt += 1
