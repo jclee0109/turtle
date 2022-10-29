@@ -1,5 +1,7 @@
 import datetime
 import calendar
+import json
+
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -30,7 +32,7 @@ class MeasurementViewSet(viewsets.ModelViewSet):
     def get_average_angle(self, angles):
         angle_sum = 0
         cnt = 0
-        for angle in angles:
+        for angle in json.loads(angles):
             angle = float(angle)
             if 0 <= angle <= 90:
                 angle_sum += angle
