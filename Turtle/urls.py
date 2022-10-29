@@ -43,4 +43,5 @@ urlpatterns = [
     path('api/accounts/', include('accountapp.urls')),
     path('api/profiles/', include('profileapp.urls')),
     path('api/', include("measurementapp.urls")),
+    path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

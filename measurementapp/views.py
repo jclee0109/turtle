@@ -32,7 +32,7 @@ class MeasurementViewSet(viewsets.ModelViewSet):
     def get_average_angle(self, angles):
         angle_sum = 0
         cnt = 0
-        for angle in json.loads(angles):
+        for angle in angles:
             angle = float(angle)
             if 0 <= angle <= 90:
                 angle_sum += angle
