@@ -11,6 +11,8 @@ class Measurement(models.Model):
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     angles = models.JSONField(default=[])
+    average_angle = models.FloatField(default=0)
+
     base_angle = models.FloatField(default=0)
 
     start_datetime = models.DateTimeField()
